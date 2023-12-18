@@ -48,6 +48,8 @@ export const InterfaceNames = Object.freeze({
     QueueMessageReader:   "queuemessagereader",
     SagemakerVectorsInterface:   "sagemakervectorsinterface",
     KinesisRecordReader:   "kinesisrecordreader",
+    DynamoDBStreamsRecordReader: "dynamodbstreamsrecordreader",
+    DynamoDBTableItemReader: "dynamodbtableitemreader"
 });
 
 export function interfaceNameFromString(str) {
@@ -55,6 +57,8 @@ export function interfaceNameFromString(str) {
     else if (str == "queuemessagereader") { return InterfaceNames.QueueMessageReader; }
     else if (str == "sagemakervectorsinterface") { return InterfaceNames.SagemakerVectorsInterface; }
     else if (str == "kinesisrecordreader") { return InterfaceNames.KinesisRecordReader; }
+    else if (str == "dynamodbstreamsrecordreader") { return InterfaceNames.DynamoDBStreamsRecordReader; }
+    else if (str == "dynamodbtableitemreader") { return InterfaceNames.DynamoDBTableItemReader; }
     else {
         throw new Error('Unexpected InterfaceName');
     }

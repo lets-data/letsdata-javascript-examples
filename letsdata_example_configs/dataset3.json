@@ -1,32 +1,32 @@
 {
-    "datasetName": "TargetUriExtractorSQSReadKinesisWriteJavascript1",
-    "accessGrantRoleArn": "arn:aws:iam::151166716410:role/CommonCrawlAccessToIAMUser",
-    "customerAccountForAccess": "151166716410",
-    "region": "us-east-1",
-    "readConnector": {
-      "artifactImplementationLanguage": "Javascript",
-      "interfaceECRImageResourceLocation": "Customer",
-      "interfaceECRImagePath": "151166716410.dkr.ecr.us-east-1.amazonaws.com/letsdata_javascript_functions:latest",
-      "connectorDestination": "SQS",
-      "queueName": "tldwc47b6777a7828131183198d115458b51c",
-      "resourceLocation": "LetsData"
-    },
-    "writeConnector": {
-      "connectorDestination": "Kinesis",
-      "resourceLocation": "letsdata",
-      "kinesisShardCount": 1
-    },
-    "errorConnector": {
-      "connectorDestination": "S3",
-      "resourceLocation": "letsdata"
-    },
-    "computeEngine": {
-      "computeEngineType": "Lambda",
-      "concurrency": 2,
-      "timeoutInSeconds": 900
-    },
-    "manifestFile": {
-      "sqsReaderTaskStopCondition": "DrainQueues",
-      "sqsReaderTaskStopAfterConsecutiveEmptyReceives": 10
-    }
+  "datasetName": "TargetUriExtractorSQSReadKinesisWriteJavascript1",
+  "accessGrantRoleArn": "arn:aws:iam::151166716410:role/CommonCrawlAccessToIAMUser",
+  "customerAccountForAccess": "151166716410",
+  "region": "us-east-1",
+  "readConnector": {
+    "artifactImplementationLanguage": "Javascript",
+    "interfaceECRImageResourceLocation": "Customer",
+    "interfaceECRImagePath": "151166716410.dkr.ecr.us-east-1.amazonaws.com/letsdata_javascript_functions:latest",
+    "connectorDestination": "SQS",
+    "queueName": "tldwc47b6777a7828131183198d115458b51c",
+    "resourceLocation": "LetsData"
+  },
+  "writeConnector": {
+    "connectorDestination": "Kinesis",
+    "resourceLocation": "letsdata",
+    "kinesisShardCount": 1
+  },
+  "errorConnector": {
+    "connectorDestination": "S3",
+    "resourceLocation": "letsdata"
+  },
+  "computeEngine": {
+    "computeEngineType": "Lambda",
+    "concurrency": 2,
+    "timeoutInSeconds": 900
+  },
+  "manifestFile": {
+    "sqsReaderTaskStopCondition": "DrainQueues",
+    "sqsReaderTaskStopAfterConsecutiveEmptyReceives": 10
   }
+}

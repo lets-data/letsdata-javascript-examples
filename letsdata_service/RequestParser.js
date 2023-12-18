@@ -2,6 +2,8 @@ import { logger } from "../letsdata_utils/logging_utils.js";
 import { letsdata_assert } from "../letsdata_utils/validations.js";
 import { getQueueMessageReaderRequest } from "./QueueMessageReaderService.js";
 import { getKinesisRecordReaderServiceRequest } from "./KinesisRecordReaderService.js";
+import { getDynamoDBRecordReaderServiceRequest } from "./DynamoDBRecordReaderService.js";
+import { getDynamoDBTableItemReaderServiceRequest } from "./DynamoDBTableItemReaderService.js";
 import { getSagemakerVectorsInterfaceServiceRequest } from "./SagemakerVectorsInterfaceService.js";
 import { InterfaceNames, LetsDataAuthParams, interfaceNameFromString }  from './Service.js';
 import { getSingleFileParserRequest }  from './SingleFileParserService.js';
@@ -37,8 +39,12 @@ export function getServiceRequest(_event) {
         serviceRequest = getQueueMessageReaderRequest(requestId, letsDataAuthParams, interfaceName, functionName, data, batchedData);
     } else if (interfaceName == InterfaceNames.SagemakerVectorsInterface) {
         serviceRequest = getSagemakerVectorsInterfaceServiceRequest(requestId, letsDataAuthParams, interfaceName, functionName, data, batchedData);
-    }  else if (interfaceName == InterfaceNames.KinesisRecordReader) {
+    } else if (interfaceName == InterfaceNames.KinesisRecordReader) {
         serviceRequest = getKinesisRecordReaderServiceRequest(requestId, letsDataAuthParams, interfaceName, functionName, data, batchedData);
+    } else if (interfaceName == InterfaceNames.DynamoDBStreamsRecordReader) {
+        serviceRequest = getDynamoDBRecordReaderServiceRequest(requestId, letsDataAuthParams, interfaceName, functionName, data, batchedData);
+    } else if (interfaceName == InterfaceNames.DynamoDBTableItemReader) {
+        serviceRequest = getDynamoDBTableItemReaderServiceRequest(requestId, letsDataAuthParams, interfaceName, functionName, data, batchedData);
     } else {
         throw new Exception("lambda event - interfaceName not yet supported "+JSON.stringify(interfaceName));
     }
